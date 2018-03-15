@@ -19,8 +19,6 @@ class Lawyer(User):
     #case_status = models.BooleanField(initial=False)
     fees = models.IntegerField(default=0)
 
-
-    
 class Police(User):
 
     phone = models.IntegerField(default=0)
@@ -28,6 +26,15 @@ class Police(User):
 
     cases_registered = models.CharField(max_length=100)
     #case_status = models.BooleanField(initial=False)
+
+
+class VictimCase(models.Model):
+    victim = models.ForeignKey(User,on_delete=models.CASCADE,related_name="victims")
+    lawyer = models.ForeignKey(User,on_delete=models.CASCADE,related_name="lawyers")
+    text = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.text
 
 
 """"
@@ -72,4 +79,3 @@ class User(models.Model):
 
 
 """
-    
