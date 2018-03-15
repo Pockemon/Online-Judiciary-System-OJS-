@@ -70,7 +70,7 @@ def login_victim(request):
         login(request,user)
         #print(request.user.is_authenticated)
         return render(request, 'accounts3/victim_home.html')
-    return render(request,"accounts3/form.html",{"form":form,"title":title})
+    return render(request,"accounts3/login_victim.html",{"form":form,"title":title})
 
 
 def login_police(request):
@@ -83,7 +83,7 @@ def login_police(request):
         login(request,user)
         #print(request.user.is_authenticated)
         return render(request, 'accounts3/police_home.html')
-    return render(request,"accounts3/form.html",{"form":form,"title":title})
+    return render(request,"accounts3/login_police.html",{"form":form,"title":title})
 
 def login_lawyer(request):
     title = "Login"
@@ -95,7 +95,7 @@ def login_lawyer(request):
         login(request,user)
         #print(request.user.is_authenticated)
         return render(request, 'accounts3/lawyer_home.html')
-    return render(request,"accounts3/form.html",{"form":form,"title":title})
+    return render(request,"accounts3/login_lawyer.html",{"form":form,"title":title})
 
 
 def profile_victim(request):
