@@ -20,7 +20,7 @@ urlpatterns = [
    path('police_signup/', views.police_signup, name='police_signup'),
 
    #homepage/login will open the login page for user
-   #path('login',views.login,name='login'),
+   #path('login1',views.login1,name='login1'),
    #path('login',login,{'template_name' : 'accounts3/login1.html'}),
 
    #just for debugging
@@ -66,6 +66,7 @@ urlpatterns = [
 
    path('police_home',views.police_home,name='victim_home'),
 
+   path('case_victim',views.CaseCreateView.as_view(),name='case_victim'),
 
    #"just for debugging"
    #path('profile/edit',views.edit_profile,name="edit_profile"),
@@ -75,6 +76,4 @@ urlpatterns = [
    #path('profile/reset_password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)',password_reset_confirm,name='password_reset_confirm'),
    #path('profile/reset_password/complete',password_reset_complete,name='password_reset_comlete'),
 ]
-
-
 
