@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% block head %}
+<title>Victim Home Page</title>
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .bg {
+        /* The image used */
+        background-image: url("https://wallpaperscraft.ru/image/siniy_goluboy_cvet_fon_more_stena_volna_72426_3840x2160.jpg");
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    h1 {
+        text-align: center;
+        color: black;
+        font-size: 50px;
+    }
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: lightseagreen;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .right {
+        float: right;
+    }
+</style>
+
+{% endblock %} {% block body %}
+<div class="bg">
+    <ul>
+        <li><a href="http://127.0.0.1:8000/profile_police">View Profile</a></li>
+        <li><a href="http://127.0.0.1:8000/logout">Logout</a></li>
+        <li class="right"><a href="http://127.0.0.1:8000/lawyer_signup/">See New/Previous cases</a></li>
+    </ul>
+
+    <h1><i>Home Page for police</i></h1>
+
+</div>
+{% endblock %}

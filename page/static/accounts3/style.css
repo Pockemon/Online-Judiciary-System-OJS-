@@ -1,0 +1,33 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    background-image: url("https://lh3.googleusercontent.com/-CQBSatRJBQjjSB-ZyFBthBLbgSjBKc3rpCeHXEHhb9MJguSqE6Kv5lpQpi4wls37A=h900");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    /* text-align: 50px; */
+    color: white;
+    font-size: 80px;
+}
+
+h3 {
+    /* text-align: center; */
+    color: white;
+    font-size: 40px;
+    margin: 80px;
+}
+
+.btn-space {
+    margin-top: 240px;
+    margin-right: 100px;
+    margin-left: 230px;
+    color: darkmagenta
+}

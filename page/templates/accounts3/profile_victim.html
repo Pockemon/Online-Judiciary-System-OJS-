@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block head %}
+<title>Profile</title>
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .bg {
+        /* The image used */
+        background-image: url("https://wallpaperscraft.ru/image/siniy_goluboy_cvet_fon_more_stena_volna_72426_3840x2160.jpg");
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: lightseagreen;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .right {
+        float: right;
+    }
+    
+    h1 {
+        text-align: center;
+        font-size: 70px;
+        color: blueviolet;
+    }
+    
+    p {
+        text-align: center;
+        font-size: 40px;
+        color: blanchedalmond;
+    }
+</style>
+{% endblock %} {% block body %}
+
+<div class="bg">
+
+    <h1>Profile Lawyer</h1>
+
+    <ul>
+        <li><a href="http://127.0.0.1:8000/login">back</a></li>
+    </ul>
+
+    <div class="container">
+        <p style="text-align: center;color:blue;font-size:40px">Username: {{ user }}</p>
+        <p style="text-align: center;color:blue;font-size:40px">Address : {{ user.address }}</p>
+        <p style="text-align: center;color:blue;font-size:40px">Email: {{ user.email }}</p>
+    </div>
+
+</div>
+
+{% endblock %}

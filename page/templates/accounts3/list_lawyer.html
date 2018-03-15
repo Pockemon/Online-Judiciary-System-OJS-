@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% load render_table from django_tables2 %}{% block head %}
+<title>
+    Login page</title>
+<style>
+    h1 {
+        text-align: center;
+        color: red;
+        font-size: 50px;
+    }
+    
+    P {
+        text-align: center;
+        color: pink;
+        font-size: 30px;
+    }
+    
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .bg {
+        /* The image used */
+        background-image: url("https://wallpaperscraft.ru/image/siniy_goluboy_cvet_fon_more_stena_volna_72426_3840x2160.jpg");
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 800px;
+    }
+    
+    th,
+    td {
+        padding: 15px;
+    }
+    
+    th {
+        text-align: center;
+        color: lightgoldenrodyellow;
+    }
+</style>
+
+{% endblock %} {% block body %}
+
+<div class="bg">
+    <h1>List of registered Lawyers </h1>
+
+    <!--    {% for lawyer in object_list %} <br>{{lawyer.username}} {{lawyer.email}} {{lawyer.phone}} {{lawyer.previous_cases}} {% endfor %} -->
+    <p>You can select one of the lawyer from the list which you think is suitable for your case.</p>
+
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Email-id</th>
+            <th>Phone no.</th>
+            <th>Previous handled cases</th>
+            <th>Fees</th>
+        </tr>
+        {% for lawyer in object_list %}
+        <tr>
+            <td>{{lawyer.username}}</td>
+            <td>{{lawyer.email}}</td>
+            <td>{{lawyer.phone}}</td>
+            <td>{{lawyer.previous_cases}} </td>
+            <td>{{lawyer.fees}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    {% endblock %}

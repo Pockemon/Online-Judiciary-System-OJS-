@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block head %}
+<title>
+    Login page</title>
+<style>
+    h1 {
+        text-align: center;
+        color: red;
+        font-size: 50px;
+    }
+    
+    .try {
+        margin-top: 100px;
+        align-content: center;
+        text-align: center;
+    }
+    
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .bg {
+        /* The image used */
+        background-image: url("https://wallpaperscraft.ru/image/siniy_goluboy_cvet_fon_more_stena_volna_72426_3840x2160.jpg");
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% endblock %} {% block body %}
+
+<div class="bg">
+    <h1>Hey,Welcome to the login page for police</h1>
+    <div class="try">
+        <form method="post">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <p style="margin:70px;font-size:50px;color:darkorchid;text-align:center">If you are not already registered in system you can sign up here.</p>
+    <a href="http://127.0.0.1:8000/police_signup/" class="btn btn-primary btn-lg btn-space" role="button" style="text-align: center;margin-left:500px;font-size:30px">Signup</a>
+</div>
+
+{% endblock %}
