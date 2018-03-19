@@ -3,16 +3,12 @@
 **Prerequisites
 
 
-
-**Django, Python3
+Django, Python3
 
 **How to Run 
 
+Clone the repository. 
 
-**Clone the repository. 
+cd into the Online-Judiciary-System-OJS- folder.
 
-
-**cd into the Online-Judiciary-System-OJS- folder.
-
-
-**Run the command: python manage.py runserver
+Run the command: python manage.py runserver
