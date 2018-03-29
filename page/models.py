@@ -18,6 +18,10 @@ class Lawyer(User):
     previous_cases = models.CharField(max_length=200)
     #case_status = models.BooleanField(initial=False)
     fees = models.IntegerField(default=0)
+    #case_details = models.CharField(max_length=1000)
+
+    def __unicode__(self):
+        return u"%s" % self.user
 
 class Police(User):
 
@@ -26,16 +30,21 @@ class Police(User):
 
     cases_registered = models.CharField(max_length=100)
     #case_status = models.BooleanField(initial=False)
-
+    #case_details = models.TextField(max_length=1000)
 
 class VictimCase(models.Model):
     victim = models.ForeignKey(User,on_delete=models.CASCADE,related_name="victims")
-    lawyer = models.ForeignKey(User,on_delete=models.CASCADE,related_name="lawyers")
+    #lawyer = models.ForeignKey(User,on_delete=models.CASCADE,related_name="lawyers",default='')
     text = models.CharField(max_length=100)
 
     def __str__(self):
         return self.text
 
+class Case(models.Model):
+    text = models.CharField(max_length = 1000)
+    victim_name = models.CharField(max_length = 100)
+    lawyer_name = models.CharField(max_length = 100)
+    police_name = models.CharField(max_length = 100)
 
 """"
 class LawyerTable(tables.Table):
@@ -79,3 +88,4 @@ class User(models.Model):
 
 
 """
+    

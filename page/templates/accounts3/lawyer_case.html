@@ -1,0 +1,110 @@
+{% extends 'base.html' %} {% load render_table from django_tables2 %}{% block head %}
+<title>
+    Cases Received
+</title>
+
+<style>
+    h1 {
+        text-align: center;
+        color: red;
+        font-size: 50px;
+    }
+    
+    P {
+        text-align: center;
+        color: white;
+        font-size: 30px;
+    }
+    
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .bg {
+        /* The image used */
+        background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/light-colour-background-hd-4.jpg");
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 800px;
+    }
+    
+    th,
+    td {
+        padding: 15px;
+    }
+    
+    th {
+        text-align: center;
+        color: black;
+    }
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: lightseagreen;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .right {
+        float: right;
+    }
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+{% endblock %} {% block body %}
+<div class="bg">
+    <ul>
+        <li class="right"><a href="http://127.0.0.1:8000/login_victim">Back</a></li>
+    </ul>
+    <h1>Cases </h1>
+    <table>
+        <tr>
+            <th>Victim name</th>
+            <th>Lawyer name</th>
+            <th>Case details</th>
+        </tr>
+        {% for items in items %}
+        <tr>
+            <td>{{items.victim_name}}</td>
+            <td>{{items.lawyer_name}}</td>
+            <td>{{items.text}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endblock %}
+</div>

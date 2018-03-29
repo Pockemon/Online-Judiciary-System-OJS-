@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block head %}
+<title>
+    Login page</title>
+<style>
+    h1 {
+        text-align: center;
+        color: red;
+        font-size: 50px;
+    }
+    
+    .try {
+        margin-top: 100px;
+        align-content: center;
+        text-align: center;
+    }
+    
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .bg {
+        /* The image used */
+        background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/PPrUZre/golden-motion-background-with-light-effect_hqrfuyrgx_thumbnail-full01.png");
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% endblock %} {% block body %}
+<!--/lawyer/case_details/ is written so the form details are posted back to where it was created from-->
+<div class="bg">
+    <h1><i>Enter case details</i></h1>
+    <div class="try">
+        <form method="post">
+            {% csrf_token %} {{ form.as_ul }}
+            <input type="submit" name="submit" value="Submit Case details" />
+        </form>
+    </div>
+</div>
+
+{% endblock %}

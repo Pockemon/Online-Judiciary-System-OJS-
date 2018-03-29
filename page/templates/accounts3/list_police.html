@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% load render_table from django_tables2 %}{% block head %}
 <title>
-    Login page</title>
+    Police stations
+</title>
 <style>
     h1 {
         text-align: center;
@@ -50,6 +51,13 @@
     }
 </style>
 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 {% endblock %} {% block body %}
 
 <div class="bg">
@@ -65,15 +73,15 @@
             <th>Phone no.</th>
             <th>Cases registered</th>
         </tr>
-        {% for lawyer in object_list %}
+        {% for police in object_list %}
         <tr>
-            <td>{{lawyer.username}}</td>
-            <td>{{lawyer.email}}</td>
-            <td>{{lawyer.phone}}</td>
-            <td>{{lawyer.cases_registered}} </td>
+            <td>{{police.username}}</td>
+            <td>{{police.email}}</td>
+            <td>{{police.phone}}</td>
+            <td>{{police.cases_registered}} </td>
         </tr>
         {% endfor %}
     </table>
 
-
-    {% endblock %}
+    <a href="http://127.0.0.1:8000/police/case_details/" class="btn btn-primary btn-lg btn-space" role="button" style="text-align: center;margin-top:40px">Enter case details</a> {% endblock %}
+</div>

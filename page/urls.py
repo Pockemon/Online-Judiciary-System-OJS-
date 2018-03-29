@@ -18,6 +18,8 @@ urlpatterns = [
    path('victim_signup/', views.victim_signup, name='victim_signup'),
    path('lawyer_signup/', views.lawyer_signup, name='lawyer_signup'),
    path('police_signup/', views.police_signup, name='police_signup'),
+   path('lawyer/case_details/', views.lawyer_case_details, name='edit_lawyer'),
+   path('police/case_details/', views.police_case_details, name='edit_police'),
 
    #homepage/login will open the login page for user
    #path('login1',views.login1,name='login1'),
@@ -60,13 +62,26 @@ urlpatterns = [
 
    path('list_police/',ListView.as_view(queryset=Police.objects.all(),template_name="accounts3/list_police.html")),
 
-   path('victim_home',views.victim_home,name='victim_home'),
+   path('victim_home/',views.victim_home,name='victim_home'),
 
-   path('lawyer_home',views.lawyer_home,name='lawyer_home'),
+   path('lawyer_home/',views.lawyer_home,name='lawyer_home'),
 
-   path('police_home',views.police_home,name='victim_home'),
+   path('police_home/',views.police_home,name='police_home'),
 
    path('case_victim',views.CaseCreateView.as_view(),name='case_victim'),
+
+   path('victim_case',views.victim_case, name='victim_case'),
+
+   path('lawyer_case',views.lawyer_case,name='Lawyer_case'),
+
+   path('police_case',views.police_case,name='Police_case'),
+
+    path('edit_profile_victim',views.edit_profile_victim,name="edit_profile_victim"),
+
+   path('edit_profile_lawyer',views.edit_profile_lawyer,name="edit_profile_lawyer"),
+
+   path('edit_profile_police',views.edit_profile_police,name="edit_profile_police"),
+
 
    #"just for debugging"
    #path('profile/edit',views.edit_profile,name="edit_profile"),
@@ -76,4 +91,6 @@ urlpatterns = [
    #path('profile/reset_password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)',password_reset_confirm,name='password_reset_confirm'),
    #path('profile/reset_password/complete',password_reset_complete,name='password_reset_comlete'),
 ]
+
+
 

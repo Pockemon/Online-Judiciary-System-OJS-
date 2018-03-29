@@ -1,15 +1,17 @@
 from django.shortcuts import render,render_to_response
 from django.http import HttpResponseRedirect
 from page.forms import RegistrationForm,VictimSignUpForm,LawyerSignUpForm,PoliceSignUpForm
-from page.forms import EditProfileForm,UserLoginForm
+from page.forms import UserLoginForm,EditProfileFormLawyer,EditProfileFormPolice,EditProfileFormVictim
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm,AuthenticationForm
 from django.contrib.auth import authenticate, login,get_user_model,logout
-from page.models import Lawyer,Police,VictimCase,Victim
+from page.models import Lawyer,Police,VictimCase,Victim,Case
 from django.views.generic import CreateView,DeleteView,DetailView,UpdateView
 from django.contrib import messages
+from page.forms import LawyerForm, PoliceForm
+#from django.core.context_processors import csrf
 
 # Create your views here.
 def home(request):
@@ -26,7 +28,7 @@ class CaseCreateView(CreateView):
         case1.victim = self.request.user
         case1.save()
         messages.success(self.request,'Case details are added successfully')
-        return redirect('add_case')
+        return redirect('page:add_case')
 
 
 def victim_signup(request):
@@ -68,9 +70,10 @@ def login_victim(request):
         password = form.cleaned_data.get("password")
         user = authenticate(username=username,password=password)
         login(request,user)
+        items = Case.objects.filter(victim_name__startswith = username)
         #print(request.user.is_authenticated)
         return render(request, 'accounts3/victim_home.html')
-    return render(request,"accounts3/login_victim.html",{"form":form,"title":title})
+    return render(request,"accounts3/login_victim.html",{"form":form,"title":title,})
 
 
 def login_police(request):
@@ -84,6 +87,7 @@ def login_police(request):
         #print(request.user.is_authenticated)
         return render(request, 'accounts3/police_home.html')
     return render(request,"accounts3/login_police.html",{"form":form,"title":title})
+
 
 def login_lawyer(request):
     title = "Login"
@@ -102,33 +106,165 @@ def profile_victim(request):
     args = {'user':request.user}
     return render(request,'accounts3/profile_victim.html',args)
 
+
 def profile_lawyer(request):
     args = {'user':request.user}
     return render(request,'accounts3/profile_lawyer.html',args)
+
 
 def profile_police(request):
     args = {'user':request.user}
     return render(request,'accounts3/profile_police.html',args)
 
+
 def choice_home(request):
     args = {'user':request.user}
     return render(request,'accounts3/choice_home.html',args)
+
 
 def victim_home(request):
     args = {'user':request.user}
     return render(request,'accounts3/victim_home.html',args)
 
+
 def lawyer_home(request):
     args = {'user':request.user}
     return render(request,'accounts3/lawyer_home.html',args)
+
 
 def police_home(request):
     args = {'user':request.user}
     return render(request,'accounts3/police_home.html',args)
 
+
 def add_case(request):
     args = {'user':request.user}
     return render(request,'accounts3/add_case.html',args)
+
+def lawyer_case_details(request):
+    if request.method =='POST':
+        form = LawyerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts3/victim_home.html')
+    else:
+        form = LawyerForm()
+        return render(request, 'accounts3/lawyer_case_details.html', {'form': form})
+
+def police_case_details(request):
+    if request.method =='POST':
+        form = PoliceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts3/victim_home.html')
+    else:
+        form = PoliceForm()
+        return render(request, 'accounts3/police_case_details.html', {'form': form})
+
+
+def victim_case(request):
+    username = None
+    #if request.user.is_authenticated():
+    username = request.user.username
+    items = Case.objects.filter(victim_name__startswith = username)
+    return render(request, 'accounts3/victim_case.html', {'items':items})
+
+def lawyer_case(request):
+    username = None
+    #if request.user.is_authenticated():
+    username = request.user.username
+    items = Case.objects.filter(lawyer_name__startswith = username)
+    return render(request, 'accounts3/lawyer_case.html', {'items':items})
+
+def police_case(request):
+    username = None
+    #if request.user.is_authenticated():
+    username = request.user.username
+    items = Case.objects.filter(police_name__startswith = username)
+    return render(request, 'accounts3/police_case.html', {'items':items})
+
+def edit_profile_victim(request):
+    if request.method == 'POST':
+        form = EditProfileFormVictim(request.POST, instance=request.user)
+        #return redirect('victim_home')
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts3/victim_home.html')
+    else:
+        form = EditProfileFormVictim(instance=request.user)
+        args = {'form': form}
+        return render(request, 'accounts3/edit_profile_victim.html', {'form': form})
+
+def edit_profile_lawyer(request):
+    if request.method == 'POST':
+        form = EditProfileFormLawyer(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts3/lawyer_home.html')
+    else:
+        form = EditProfileFormLawyer(instance=request.user)
+        args = {'form': form}
+        return render(request, 'accounts3/edit_profile_lawyer.html', {'form': form})
+
+def edit_profile_police(request):
+    if request.method == 'POST':
+        form = EditProfileFormPolice(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return render(request, 'accounts3/police_home.html')
+    else:
+        form = EditProfileFormPolice(instance=request.user)
+        #args = {'form': form}
+    return render(request, 'accounts3/edit_profile_police.html', {'form': form})
+
+
+'''class EditLawyer(UpdateView):
+    model = Lawyer
+    form_class = LawyerForm
+    template_name = "accounts3/lawyer_case_details.html"
+
+    def get_object(self, *args, **kwargs):
+        user = get_object_or_404(User, pk=self.kwargs['pk'])
+        return user.userprofile
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse("accounts3/lawyer_case_details.html")
+'''
+
+'''def lawyer_create(request, template_name="accounts3/lawyer_case_details.html"):
+    if request.method == 'POST':
+        form = LawyerForm(data=request.POST)
+        if form.is_valid():
+             lawyer = form.save(commit=False)
+             user.save()
+             return HttpResponseRedirect('login_victim/')#change this url and put url to victim homepage
+    #if there is  nothing in the post array then we are creating the form
+    else:
+        form = LawyerForm()
+    args = {}
+        #args.update(csrf(request))
+    args['form'] = form
+    return render(request,'accounts3/lawyer_case_details.html',args)
+
+def police_create(request):
+    if request.method == 'POST':
+        form = PoliceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('login_victim/') #Change this url and put url to victim homepage
+    else:
+        form = PoliceForm()
+    args = {}
+        #args.update(csrf(request))
+    #args['form'] = form
+    return render(request,'accounts3/police_case_details.html',{'form':form})
+'''
+
+
+
+
 
 """
 

@@ -1,16 +1,39 @@
+from django.forms import ModelForm
 from django import forms
-from page.models import Victim,Lawyer,Police
+from page.models import Victim,Lawyer,Police,VictimCase
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import authenticate, login,get_user_model,logout
+from page.models import Lawyer, Police, Case
 
 #from page.models import UserProfile
 
+class LawyerForm(ModelForm):
+
+    class Meta:
+        model = Case
+        fields = ['text','victim_name','lawyer_name']
+        # labels = {'victim_name': ('Victim name'),'lawyer_name':('Lawyer name'),'text': ('Case Details'), }
+        # help_texts = {'case_details': ('Enter details of your case.'), }
+
+class PoliceForm(ModelForm):
+
+    class Meta:
+        model = Case
+        fields = ['text','victim_name','police_name']
+
+'''
+class PoliceForm(forms.ModelForm):
+    class Meta:
+        model = Police
+        fields = ['case_details']
+'''
+
 class VictimSignUpForm(UserCreationForm):
-    
+      
     class Meta:
         model = Victim
         fields = [
-            'phone',
+             'phone',
             'address',
             'username',
             'password1',
@@ -99,14 +122,44 @@ class RegistrationForm(UserCreationForm):
 
         return user
 
-class EditProfileForm(UserChangeForm):
+class EditProfileFormVictim(UserChangeForm):
     
+    password = None
 
     class Meta:
-        model = User
+        model = Victim
         fields = (
             'email',
-            'first_name',
-            'last_name',
-            'password'
+            'phone',
+            'address',
+            'password',
+        )
+
+class EditProfileFormPolice(UserChangeForm):
+    
+    password = None
+
+    class Meta:
+        model = Police
+        fields = (
+            'email',
+            'phone',
+            'address',
+            'password',
+            'cases_registered',
+        )
+
+class EditProfileFormLawyer(UserChangeForm):
+    
+    password = None
+    
+    class Meta:
+        model = Lawyer
+        fields = (
+            'email',
+            'phone',
+            'address',
+            'fees',
+            'previous_cases',
+            'password',
         )

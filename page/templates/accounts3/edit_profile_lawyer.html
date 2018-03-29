@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block head %}
+<title>Edit Profile</title>
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
+    .bg {
+        /* The image used */
+        background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/light-colour-background-hd-4.jpg");
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    h1 {
+        text-align: center;
+        color: black;
+        font-size: 50px;
+    }
+    
+    .try {
+        margin-top: 100px;
+        align-content: center;
+        text-align: center;
+    }
+    
+    p {
+        text-align: center;
+        color: blue;
+        font-size: 25px;
+    }
+</style>
+
+{% endblock %} {% block body %}
+<div class="bg">
+    <h1>Edit Profile Lawyer </h1>
+
+    <p>Note:You can change details other than password here.</p>
+
+    <div class=" try ">
+        <form method="post"> {% csrf_token %} {{ form.as_p }}
+            <button type="submit ">Submit</button>
+        </form>
+        <br>
+    </div>
+</div>
+
+{% endblock %}
