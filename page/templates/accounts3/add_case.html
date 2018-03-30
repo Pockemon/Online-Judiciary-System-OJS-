@@ -28,6 +28,34 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: lightseagreen;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .right {
+        float: right;
+    }
 </style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,6 +66,9 @@
 {% endblock %} {% block body %}
 
 <div class="bg">
+    <ul>
+        <li class="right"><a href="http://127.0.0.1:8000/victim_home/">Back</a></li>
+    </ul>
 
     <h1>Select from below option with which you want to share your case details.<br><br><br><br>
         <a href="list_lawyer/" class="btn btn-primary btn-lg btn-space" role="button" style="text-align: center">Go with Lawyer</a>
