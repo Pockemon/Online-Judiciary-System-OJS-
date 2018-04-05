@@ -1,2 +1,6 @@
 # Online-Judiciary-System-OJS-
-Software
+
+
+## Contributers
+    * Hardik Rana(@Pockemon)
+    * Harshal Shinde(@harshal9999)
