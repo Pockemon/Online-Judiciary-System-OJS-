@@ -19,9 +19,13 @@ depending on his role i.e. victim, lawyer, police, the software will supply to t
     * The police will be shown the list of FIRs filed with their police station and the
       status of various cases. They can see the description of the case as given by the
       victim. It will show the policemen involved in that case and various other details.
-    
+      
 
+## Prerequisites
+Django, Python3
 
+## How to Run
+Clone the repository. <br>cd into the ojs folder. <br>Run the command: python manage.py runserver 
 
 ## Contributers
 - Hardik Rana ([@Pockemon](https://github.com/Pockemon))
