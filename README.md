@@ -27,6 +27,9 @@ Django, Python3
 ## How to Run
 Clone the repository. <br>cd into the ojs folder. <br>Run the command: python manage.py runserver 
 
+## License
+The software is under MIT License
+
 ## Contributers
 - Hardik Rana ([@Pockemon](https://github.com/Pockemon))
 - Harshal Shinde ([@harshal9999](https://github.com/harshal9999))
