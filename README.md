@@ -20,7 +20,13 @@ depending on his role i.e. victim, lawyer, police, the software will supply to t
       status of various cases. They can see the description of the case as given by the
       victim. It will show the policemen involved in that case and various other details.
       
+## Things remaining
+- Particulary in the case of lawyer we have to add some code that lawyer can update each case details day by day(like next hearing   date,what's the progess in the case etc..),so that victim can get all the details about case at his place.
 
+- Same in the case of police(like lawyer)
+
+- To improve the UI.
+      
 ## Prerequisites
 Django, Python3
 
