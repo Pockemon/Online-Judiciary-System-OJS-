@@ -1,14 +1,14 @@
-# Online-Judiciary-System
+# Online-Judiciary-System[Django web application]
 
-In Online judiciary system,the user will be required to log in to the system, after which 
-depending on his role i.e. victim, lawyer, police, the software will supply to the users’ needs.
+In our software(Online judiciary system) the user will be required to log in to the system, after which 
+depending on his role i.e. victim, lawyer, police, the software will supply to the user's needs.
 
 * Victim:
    * Our software will allow the victim (user) to lodge FIR with the police online
-     without having to visit the police station. If the victim requires a lawyer the he can
-     view the list of registered lawyers. He will be shown the lawyers previous record
-     and will be informed about their fees. Depending on which he can choose the
-     lawyer of his choice.
+     without having to visit the police station.If victim needs police for his case then he will be shown
+     the police station nearer to his location.If the victim requires a lawyer then he can view the list
+     of registered lawyers. He will be shown the lawyers previous record and will be informed about their 
+     fees. Depending on which he can choose the lawyer of his choice.
 
 * Lawyer:
    * The lawyer on logging in will be shown the status of all the cases he is concerned
