@@ -30,9 +30,14 @@ depending on his role i.e. victim, lawyer, police, the software will supply to t
 ## Prerequisites
 Django, Python3
 
-## How to Run
-Clone the repository. <br>cd into the ojs folder. <br>Run the command: python manage.py runserver 
-
+### How to run the application
+1. Clone the repository
+> ``` https://github.com/pockemon/Online-Judiciary-System-OJS-```
+2. Change directory
+> ``` cd Online-Judiciary-System-OJS-```
+3. Run the server
+> ``` python manage.py runserver```
+ 
 ## License
 The software is under MIT License
 
